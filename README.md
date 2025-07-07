@@ -2,7 +2,8 @@
 
 本アプリは、Facebook Prophetを用いた時系列予測モデルを活用し、  
 CSV形式の売上データから将来の売上を可視化・予測するWebアプリケーションです。  
-Streamlitベースで開発されており、社内外問わず業務にすぐに導入可能です。
+
+Demo https://agent173.streamlit.app/
 
 ---
 
@@ -50,9 +51,6 @@ Facebook Prophet
 Streamlit
 
 pandas / matplotlib / plotly
-
-
-Demo https://agent173.streamlit.app/
 
 
 🚀 デプロイ方法（Streamlit Cloud）
