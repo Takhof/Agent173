@@ -3,6 +3,7 @@ import pandas as pd
 from prophet import Prophet
 from prophet.plot import plot_plotly
 import matplotlib.pyplot as plt
+import io
 
 # タイトル
 st.title("📈 未来売上予測アプリ ✨")
@@ -44,3 +45,22 @@ if uploaded_file is not None:
     # 予測テーブルも見れるオプション
     if st.checkbox("📋 予測テーブルも見る？"):
         st.write(forecast[["ds", "yhat", "yhat_lower", "yhat_upper"]])
+
+# サンプルデータ（テスト用）
+sample_data = pd.DataFrame({
+    "date": pd.date_range(start="2025-07-01", periods=30, freq='D'),
+    "sales": [10000 + i * 100 + (i % 5) * 200 for i in range(30)]
+})
+
+# CSVとしてバッファに書き出し
+csv_buffer = io.StringIO()
+sample_data.to_csv(csv_buffer, index=False)
+csv_data = csv_buffer.getvalue()
+
+# ダウンロードボタン表示✨
+st.download_button(
+    label="📥 テスト用CSVをダウンロードする",
+    data=csv_data,
+    file_name="sample_sales.csv",
+    mime="text/csv"
+)
